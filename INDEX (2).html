@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día de la Madre, Julia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ffecd2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 400px;
+            height: 550px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .card-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 50%, #ffc8dd 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ff69b4;
+            transform: rotate(45deg);
+            animation: hearts 4s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ff69b4;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -15px;
+        }
+
+        .heart1 { top: 10%; left: 20%; animation-delay: 0s; }
+        .heart2 { top: 30%; left: 80%; animation-delay: 1s; }
+        .heart3 { top: 60%; left: 10%; animation-delay: 2s; }
+        .heart4 { top: 80%; left: 70%; animation-delay: 3s; }
+        .heart5 { top: 20%; left: 50%; animation-delay: 1.5s; }
+
+        @keyframes hearts {
+            0% {
+                transform: translateY(0) rotate(45deg) scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-30px) rotate(45deg) scale(1);
+            }
+            100% {
+                transform: translateY(-60px) rotate(45deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 40px;
+            animation: rotate 10s linear infinite;
+        }
+
+        .flower1 { top: 5%; left: 10%; animation-delay: 0s; }
+        .flower2 { top: 10%; right: 10%; animation-delay: 2s; }
+        .flower3 { bottom: 10%; left: 15%; animation-delay: 4s; }
+        .flower4 { bottom: 5%; right: 15%; animation-delay: 6s; }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .title {
+            font-size: 42px;
+            color: #d4145a;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .name {
+            font-size: 56px;
+            color: #ff1493;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            animation: glow 2s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes glow {
+            0%, 100% { 
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2),
+                             0 0 10px rgba(255, 20, 147, 0.3);
+            }
+            50% { 
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2),
+                             0 0 20px rgba(255, 20, 147, 0.6),
+                             0 0 30px rgba(255, 20, 147, 0.4);
+            }
+        }
+
+        .message {
+            font-size: 20px;
+            color: #8b0045;
+            text-align: center;
+            line-height: 1.6;
+            margin-top: 20px;
+            font-style: italic;
+            z-index: 10;
+            animation: fadeIn 3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+            box-shadow: 0 0 10px #fff;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s ease;
+            z-index: 10;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-front">
+                <div class="heart heart1"></div>
+                <div class="heart heart2"></div>
+                <div class="heart heart3"></div>
+                <div class="heart heart4"></div>
+                <div class="heart heart5"></div>
+                
+                <div class="flower flower1">🌸</div>
+                <div class="flower flower2">🌺</div>
+                <div class="flower flower3">🌷</div>
+                <div class="flower flower4">🌹</div>
+                
+                <div class="title">¡Feliz Día de la Madre!</div>
+                <div class="name">Julia</div>
+                <div class="message">
+                    "Gracias por ser mi luz,<br>
+                    mi guía y mi fortaleza.<br>
+                    Tu amor infinito es el regalo<br>
+                    más hermoso de mi vida."
+                </div>
+                <button class="button" onclick="showMessage()">💝 Con todo mi amor 💝</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Crear estrellas brillantes aleatorias
+        function createSparkles() {
+            const card = document.querySelector('.card-front');
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                card.appendChild(sparkle);
+            }
+        }
+
+        function showMessage() {
+            alert('¡Eres la mejor mamá del mundo, Julia! 💖\n\nTu amor, dedicación y cariño hacen de cada día algo especial.\n\n¡Te amo con todo mi corazón! 🌸');
+        }
+
+        createSparkles();
+    </script>
+</body>
+</html>
